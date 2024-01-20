@@ -31,6 +31,8 @@ class UserForm extends Component
 
             $this->fill($user->getAttributes());
             $this->image = null;
+            $this->password = old('password');
+            // $this->password = old('password') ?? null;
         }
     }
 
@@ -40,12 +42,19 @@ class UserForm extends Component
 
         $data['name'] = $this->name;
         $data['email'] = $this->email;
-        $data['password'] = $this->password;
-        // $data['image'] = $this->image;
-        // $data['nid_front'] = $this->nid_front;
-        // $data['nid_back'] = $this->nid_back;
-        // $data['passport'] = $this->passport;
-        // $id            = $this->id;
+        $data['password'] = bcrypt($this->password);
+
+        // if(!empty($this->password))
+        // {
+        //     $pas = $this->password;
+        //     unset($pas);
+        // }
+        // if (!empty($this->password)) {
+        //     $data['password'] = bcrypt($this->password);
+        // }
+        // if (isset($data['password'])) {
+        //     unset($data['password']);
+        // }
 
         // dd($data);
         $fields = ['image'];
@@ -63,11 +72,10 @@ class UserForm extends Component
             $upload = $file->storeAs($foldername, $name);
 
             $data['image'] = $foldername.'/'.$name;
-    }
+        }
 
         if ($this->userId) {
             $user = User::find($this->userId);
-
             // if($user->image){
             //     Storage::delete($user->image);
             // }
@@ -78,9 +86,9 @@ class UserForm extends Component
             $this->image = null;
         }
 
-        if ($this->image && $user->image !== null) {
-            Storage::delete($user->image);
-        }
+        // if($user->image){
+        //         Storage::delete($user->image);
+        //     }
 
         if ($this->nid_front) {
             $nid_f = $this->nid_front;
@@ -106,6 +114,14 @@ class UserForm extends Component
                 ->toMediaCollection('passport');
         }
 
+        // $media = Media::find('id');
+
+        // if ($media) {
+        //     $media->delete();
+
+        //     Storage::delete([$media->nid_front, $media->nid_back, $media->passport]);
+        // }
+
         // dd($data);
         session()->flash('type','Storage Data Entered succesfully');
 
@@ -125,8 +141,7 @@ class UserForm extends Component
                 'max:255',
             ],
             'password' => [
-                'required',
-                'max:255',
+                'required_if:isMethod,POST',
             ],
             'image.*' => [
                 'nullable',

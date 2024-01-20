@@ -34,16 +34,13 @@
 
                         <x-ui.col class="col-md-6">
                             <div class="form-group">
-                                {{-- <label class="form_heading">Password</label> --}}
-                                <x-ui.form.input
-                                    :label="__('Password')"
-                                    type="password"
-                                    {{-- class="form-control @error('password') is-invalid @enderror" --}}
-                                    wire:model="password"
-                                    id="password"
-                                    {{-- value="{{ old('password') ?? null }}" --}}
-                                    placeholder="Password"
-                                />
+                                    <x-ui.form.input
+                                        :label="__('Password')"
+                                        type="password"
+                                        wire:model="password"
+                                        id="password"
+                                        placeholder="Password"
+                                    />
                                 {{-- @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror --}}
                             </div>
                         </x-ui.col>
@@ -55,7 +52,7 @@
                                 <x-ui.form.input
                                     :label="__('Name')"
                                     type="text"
-                                    {{-- class="form-control @error('name') is-invalid @enderror" --}}
+                                    class="form-control @error('name') is-invalid @enderror"
                                     wire:model="name"
                                     id="name"
                                     {{-- value="{{ old('name') ?? $user->name ?? null }}" --}}
@@ -89,16 +86,16 @@
                         <x-ui.col class="col-md-6">
                             <div class="form-group">
 
-                                {{-- @if ($users->getMedia('nid_front'))
+                                @if ($users && $users->getMedia('nid_front'))
                                     <a
                                         href="{{ $users->getFirstMediaUrl('nid_front') }}"
                                         class="float-sm-end"
                                         target="_blank"
                                     >Show Media</a>
-                                @endif --}}
+                                @endif
 
                                 <x-ui.form.input
-                                :label="__('Nid Front')"
+                                    :label="__('Nid Front')"
                                     type="file"
                                     wire:model="nid_front"
                                     class="form-control"
@@ -110,16 +107,16 @@
                         <x-ui.col class="col-md-6">
                             <div class="form-group">
 
-                                {{-- @if ($users->getMedia('nid_back'))
+                                @if ($users && $users->getMedia('nid_back'))
                                     <a
                                         href="{{ $users->getFirstMediaUrl('nid_back') }}"
                                         class="float-sm-end"
                                         target="_blank"
                                     >Show Media</a>
-                                @endif --}}
+                                @endif
 
                                 <x-ui.form.input
-                                :label="__('Nid Back')"
+                                    :label="__('Nid Back')"
                                     type="file"
                                     wire:model="nid_back"
                                     class="form-control"
@@ -133,13 +130,13 @@
                         <x-ui.col class="col-md-12">
                             <div class="form-group">
 
-                                {{-- @if ($users->getMedia('passport'))
+                                @if ($users && $users->getMedia('passport'))
                                     <a
                                         href="{{ $users->getFirstMediaUrl('passport') }}"
                                         class="float-sm-end"
                                         target="_blank"
                                     >Show Media</a>
-                                @endif --}}
+                                @endif
 
                                 <x-ui.form.input
                                     :label="__('Passport')"
