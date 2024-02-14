@@ -44,18 +44,6 @@ class UserForm extends Component
         $data['email'] = $this->email;
         $data['password'] = bcrypt($this->password);
 
-        // if(!empty($this->password))
-        // {
-        //     $pas = $this->password;
-        //     unset($pas);
-        // }
-        // if (!empty($this->password)) {
-        //     $data['password'] = bcrypt($this->password);
-        // }
-        // if (isset($data['password'])) {
-        //     unset($data['password']);
-        // }
-
         // dd($data);
         $fields = ['image'];
         foreach ($fields as $key => $field) {

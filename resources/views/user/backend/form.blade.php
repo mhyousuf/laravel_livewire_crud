@@ -6,9 +6,9 @@
                     <div class="card-header">
                         <h4 class="card-title">{{ __('Storage Image Media') }}</h4>
                     </div>
-                <livewire:user.user-form :userId="$user->id ?? null"/>
+                    <livewire:user.user-form :userId="$user->id ?? null" />
                 </div>
             </div>
         </div>
-</section>
+    </section>
 </x-layouts.app>

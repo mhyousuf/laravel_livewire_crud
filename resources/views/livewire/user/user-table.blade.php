@@ -26,7 +26,7 @@
                             <i class="fa fa-pencil-square-o"></i>
                         </a>
 
-                        <a href="{{ route('user.backend.users.destroy', $v->id)}}"
+                        <a href="{{ route('user.backend.users.destroy', $v->id) }}"
                             class="btn btn-icon rounded-circle btn-outline-danger  mr-1 mb-1 waves-effect waves-light del_btn delete-data">
                             <i class="fa fa-trash-o"></i>
                         </a>

@@ -10,5 +10,5 @@
             <a class="dropdown-item" id="" href="{{ route('user.backend.users.create') }}">&nbsp; Add new</a>
         </div>
     </div>
-    <livewire:user.user-table :userId="$user->id ?? null"/>
+    <livewire:user.user-table :userId="$user->id ?? null" />
 </x-layouts.app>
