@@ -23,6 +23,12 @@ use Illuminate\Support\Facades\Route;
 // Route::post('images', [ImageController::class, 'image'])->name('image.media');
 // Route::delete('images-destroy/{id?}', [ImageController::class, 'destroy'])->name('image.destroy');
 
-Route::group(['prefix' => '/', 'as' => 'user.backend.'], function () {
+// Route::group(['prefix' => '/', 'as' => 'user.backend.'], function () {
+//     Route::resource('users', User\UserController::class);
+// });
+// Route::get('/', [User\UserController::class, 'index']);
+
+Route::group(['as' => 'user.backend.'], function () {
+    Route::get('/', [User\UserController::class, 'index'])->name('/');
     Route::resource('users', User\UserController::class);
 });

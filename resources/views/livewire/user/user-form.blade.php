@@ -37,18 +37,18 @@
                                     id="name" {{-- value="{{ old('name') ?? $user->name ?? null }}" --}} placeholder="Name" />
                                 {{-- @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror --}}
                             </div>
-                    </x-ui.row>
+                        </x-ui.col>
 
-                    <x-ui.col class="col-md-6">
-                        <div class="form-group">
+                        <x-ui.col class="col-md-6">
+                            <div class="form-group">
 
-                            @isset($users->image)
-                                <a href="{{ Storage::url($users->image) }}" class="float-sm-end" target="_blank">Show
-                                    Media</a>
-                            @endisset
-                            <x-ui.form.input :label="__('Image')" type="file" wire:model="image" id="image" />
-                        </div>
-                    </x-ui.col>
+                                @isset($users->image)
+                                    <a href="{{ Storage::url($users->image) }}" class="float-sm-end" target="_blank">Show
+                                        Media</a>
+                                @endisset
+                                <x-ui.form.input :label="__('Image')" type="file" wire:model="image" id="image" />
+                            </div>
+                        </x-ui.col>
                     </x-ui.row>
 
                     <x-ui.row class="row form_box">
@@ -107,8 +107,7 @@
                                 {{ isset($users) ? 'Update' : 'Save' }}
                             </button>
 
-                            <a href="{{ route('user.backend.users.index') }}" type="button"
-                                class="btn btn-danger">Cencel</a>
+                            <a href="{{ route('user.backend.users.index') }}" type="button" class="btn btn-danger">Cencel</a>
                         </x-ui.col>
                     </x-ui.row>
                 </x-ui.form.footer>
